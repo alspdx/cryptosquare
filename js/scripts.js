@@ -1,6 +1,17 @@
+var alphaNumChar = /[a-zA-Z0-9]/;
+
 var cryptoMsg = function(input) {
   var removeCaps = input.toLowerCase();
-  return removeCaps;
+  var inputLetterArray = removeCaps.split("");
+  var outputArray = [];
+  inputLetterArray.forEach(function(letter) {
+    if (alphaNumChar.test(letter)) {
+      outputArray.push(letter);
+    };
+  })
+  console.log(outputArray.length);
+  var squareSize = Math.ceil(Math.sqrt(outputArray.length));
+  console.log(squareSize);
 }
 
 
