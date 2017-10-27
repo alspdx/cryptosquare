@@ -3,16 +3,13 @@ var squareSize;
 
 var encryptedMessage = function(unencryptedArray) {
   var encryptedArray = [];
-  for (var i = 0; encryptedArray.length <= unencryptedArray.length; i++) {
-    for (index = 0; index < unencryptedArray.length; index++) {
-      var counter = index;
-      debugger;
-      encryptedArray.push(unencryptedArray[counter]);
-
+  for (i = 0; encryptedArray.length < unencryptedArray.length; i++) {
+    for (j = 0; j < (unencryptedArray.length) ; j += squareSize) {
+      encryptedArray.push(unencryptedArray[i + j]);
     };
   };
-  console.log(encryptedArray);
-  return encryptedArray;
+  var encryptedString = encryptedArray.join("");
+  return encryptedString;
 };
 
 var cryptoMsg = function(input) {
@@ -27,7 +24,7 @@ var cryptoMsg = function(input) {
   squareSize = Math.ceil(Math.sqrt(outputArray.length));
 
   var finalMessage = encryptedMessage(outputArray);
-  console.log(finalMessage);
+  return finalMessage
 };
 
 
