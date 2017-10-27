@@ -8,11 +8,12 @@ var encryptedMessage = function(unencryptedArray) {
       encryptedArray.push(unencryptedArray[i + j]);
     };
   };
-  var encryptedString = encryptedArray.join("");
+  var encryptedString = encryptedArray.join("").match(/.{1,5}/g).join(" ");
+  var encryptedSentence = encryptedString.match(/.{1,5}/g).join(" ")
   return encryptedString;
 };
 
-var cryptoMsg = function(input) {
+var cryptoSquarer = function(input) {
   var removeCaps = input.toLowerCase();
   var inputLetterArray = removeCaps.split("");
   var outputArray = [];
@@ -22,25 +23,15 @@ var cryptoMsg = function(input) {
     };
   });
   squareSize = Math.ceil(Math.sqrt(outputArray.length));
-
   var finalMessage = encryptedMessage(outputArray);
   return finalMessage
 };
 
-
-
-
-
-
-
-
-
-// Front end logic
 $(function(){
   $("#input-form").submit(function(event) {
     event.preventDefault();
     var userInput = $("#text-input").val();
-    var output = cryptoMsg(userInput);
+    var output = cryptoSquarer(userInput);
     $("#output-msg").text(output);
   });
 });
